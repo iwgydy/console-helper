@@ -1,10 +1,9 @@
-
 import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLogData } from '@/utils/api';
 import LogItem from './LogItem';
 import { ClipboardCopy, AlertCircle } from 'lucide-react';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 
 interface ConsoleViewerProps {
@@ -22,7 +21,6 @@ const ConsoleViewer = ({
   const { toast } = useToast();
   const consoleEndRef = useRef<HTMLDivElement>(null);
   
-  // Auto-scroll to bottom when new logs arrive
   useEffect(() => {
     if (consoleEndRef.current) {
       consoleEndRef.current.scrollIntoView({ behavior: 'smooth' });
